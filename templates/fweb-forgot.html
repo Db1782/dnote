@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DNote</title>
+    <link rel="stylesheet" href="{{url_for('static',filename='fweb.css')}}">
+</head>
+<body>
+    <div id="log2">
+    <form action="/send-number" 
+    method="post">
+    <h3 id="h33">Login with phone number</h3>
+    <input type="tel" placeholder="Enter Number" name="Number" id="pl1">
+    <input type="submit" value="Submit" id="sub1">
+    
+
+    </form>
+    </div>
+   
+      <button id="hr1"><a href="{{url_for('fweb')}} " id="u4" >Login page</a></button>
+      
+</body>
+</html>
