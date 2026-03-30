@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DNote</title>
+       <script>
+      let counter = 0;
+      function count() {
+        counter = counter+1;
+        alert("cleared " + counter +" time/s")
+        
+      }
+    </script>
+     <link rel="stylesheet" href="{{url_for('static',filename='fweb.css')}}">
+</head>
+
+<body>
+    
+    <div id="log"><h2 id="h22">DNote Workspace</h2>
+    <form action="/save-note" method="post">
+ 
+         <textarea name="note_content" placeholder="Write your note here..." id="note-area"></textarea>
+         <input type="submit" value="Save-note" id="b4">
+         <input type="reset" value="Clear" id="cl1" onclick="count()">
+        
+    </form>
+</div>
+<ul>
+{% for n in notes %}
+<li>{{n}}</li>
+{% endfor %}
+</ul>
+<div>
+   <button id="hr2"><a href="{{url_for('fweb')}} " id="u5" >Login page</a></button>
+
+</div>
+
+
+</body>
+</html>
