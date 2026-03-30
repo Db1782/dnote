@@ -1,1 +1,1 @@
-web:python fweb.py
+web: python fweb.py
