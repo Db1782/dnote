@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DNote</title>
+    <link rel="icon" href="dn.png" image="image/png">
+    <link rel="stylesheet" href="{{url_for('static',filename='fweb.css')}}">
+</head>
+<body>
+    <div id="a"><h1>Welcome to DNote</h1><br></div>
+
+    <div id="div1">
+        <form action="/login" 
+        method="post">
+             <h3 id="h3">Login</h3>
+            <input type="email" placeholder="Email" name="Email" id="b"><br>
+            <input type="password" placeholder="Password" name="Password" id="c"><br>
+            <a href="{{url_for('forgot')}}" id="fg1">Forgot password ?</a>
+            <input type="submit" value="Login" name="login" id="d" ><br>
+            
+        </form>
+    </div>
+  
+    
+</body>
+</html>
